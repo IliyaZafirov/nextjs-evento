@@ -1,28 +1,18 @@
 import H1 from "@/components/h1";
+import { EventoEvent } from "@/lib/types";
 type EventsPageProps = {
   params: {
     city: string;
   };
 };
 
-type EventProps = {
-  id: number;
-  name: string;
-  slug: string;
-  city: string;
-  location: string;
-  date: string;
-  organizerName: string;
-  imageUrl: string;
-  description: string;
-};
 export default async function EventsPage({ params }: EventsPageProps) {
   const city = params.city;
 
   const response = await fetch(
     `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`
   );
-  const events = await response.json();
+  const events: EventoEvent[] = await response.json();
   console.log(events);
   // console.log(params);
 
@@ -34,7 +24,7 @@ export default async function EventsPage({ params }: EventsPageProps) {
           `Events in ${city.charAt(0).toUpperCase() + city.slice(1)}`}
       </H1>
 
-      {events.map((event: EventProps) => (
+      {events.map((event) => (
         <section key={event.id}>{event.name}</section>
       ))}
     </main>
