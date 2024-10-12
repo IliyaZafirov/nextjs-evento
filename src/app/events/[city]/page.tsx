@@ -24,7 +24,6 @@ export default async function EventsPage({ params }: EventsPageProps) {
       </H1>
 
       <EventsList events={events} />
-   
     </main>
   );
 }
