@@ -9,7 +9,7 @@ export default function Skeleton({ className }: SkeletonProps) {
   return (
     <div
       className={cn(
-        "${className} h-4 w-[550px] rounded-md bg-white/5",
+        "h-4 w-[550px] rounded-md bg-white/5",
         className
       )}
     />
