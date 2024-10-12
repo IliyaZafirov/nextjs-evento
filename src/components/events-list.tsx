@@ -1,15 +1,18 @@
 import { EventoEvent } from "@/lib/types";
 import EventCard from "./event-card";
-import { sleep } from "@/lib/utils";
 
 type EventListProps = {
   city: string;
 };
 
 export default async function EventsList({ city }: EventListProps) {
-  await sleep(3000);
   const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`
+    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`,
+    {
+      next: {
+        revalidate: 180,
+      },
+    }
   );
   const events: EventoEvent[] = await response.json();
 
