@@ -27,6 +27,18 @@ export function generateMetadata({ params }: Props): Metadata {
 
 const pageNumberSchema = z.coerce.number().int().positive().optional();
 
+export async function generateStaticParams() {
+  // top 100 most popular events
+  return [
+    {
+      slug: "comedy-extravaganza",
+    },
+    {
+      slug: "dj-practice-session",
+    },
+  ];
+}
+
 export default async function EventsPage({
   params,
   searchParams,
