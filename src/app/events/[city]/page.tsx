@@ -39,6 +39,8 @@ export async function generateStaticParams() {
   ];
 }
 
+export const dynamic = "force-dynamic";
+
 export default async function EventsPage({
   params,
   searchParams,
